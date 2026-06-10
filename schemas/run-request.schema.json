@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Execution request used by the run planner.",
+  "properties": {
+    "data_location": {
+      "description": "Controlled storage root or data availability note.",
+      "type": "string"
+    },
+    "gpu_memory_gb": {
+      "description": "Approximate per-GPU memory requirement when known.",
+      "type": "integer"
+    },
+    "node_count": {
+      "description": "Expected node count.",
+      "type": "integer"
+    },
+    "requires_hil": {
+      "description": "Whether hardware-in-the-loop or edge workflow orchestration is required.",
+      "type": "boolean"
+    },
+    "requires_realtime": {
+      "description": "Whether real-time or interactive inference is required.",
+      "type": "boolean"
+    },
+    "requires_workflow_orchestration": {
+      "description": "Whether OSMO or equivalent multi-stage orchestration is required.",
+      "type": "boolean"
+    },
+    "scale": {
+      "enum": [
+        "pilot",
+        "large",
+        "massive"
+      ],
+      "type": "string"
+    },
+    "workload_type": {
+      "enum": [
+        "data-factory",
+        "simulation",
+        "training",
+        "evaluation",
+        "inference",
+        "massive-training"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "workload_type",
+    "scale",
+    "node_count",
+    "requires_realtime",
+    "requires_hil",
+    "requires_workflow_orchestration"
+  ],
+  "title": "Run request",
+  "type": "object"
+}

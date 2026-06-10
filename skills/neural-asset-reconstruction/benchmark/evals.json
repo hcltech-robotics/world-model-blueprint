@@ -1,0 +1,93 @@
+[
+  {
+    "expected_behavior": [
+      "selects physical-ai-neural-reconstruction from NVIDIA/skills as the primary route",
+      "names nurec-index, ncore, and nre for conversion and reconstruction",
+      "requires calibration, timing, rights, and reconstruction quality evidence",
+      "hands USDZ, renders, metrics, or simulator evidence to simready-content-integration and evaluation-safety-lead"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer routes calibrated multi-sensor captures through the NuRec skill stack, records service surface and provenance, and stops if calibration or rights evidence is missing.",
+    "id": "nar-nurec-multisensor-route",
+    "question": "We have calibrated camera, LiDAR, telemetry, and action logs from a machine run. Plan the route to reconstruct the scene for simulator replay."
+  },
+  {
+    "expected_behavior": [
+      "selects Content Agents material, physics, and validation capabilities",
+      "prefers REST service mode when the user asks for a service-like lane",
+      "does not call Content Agents a NIM unless the actual service surface is NIM-compatible",
+      "requires USD validation and human review before SimReady handoff"
+    ],
+    "expected_script": null,
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer treats Content Agents as the USD enrichment lane for material, physics, texture, and validation work, with REST or CLI execution recorded honestly.",
+    "id": "nar-content-agents-usd-enrichment",
+    "question": "We have a grey USD asset and want service-style material, physics, texture, and validation automation before simulation."
+  },
+  {
+    "expected_behavior": [
+      "routes CAD conversion to omniverse-cad-to-simready in NVIDIA/skills",
+      "uses Content Agents only for material, physics, texture, or validation enrichment when required",
+      "requires source asset rights and conversion viability evidence",
+      "hands the final USD or package plan to simready-content-integration"
+    ],
+    "expected_script": null,
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer sends CAD/source asset conversion to the upstream CAD-to-SimReady skill and then hands validated assets to the local SimReady content integration stage.",
+    "id": "nar-cad-to-simready-route",
+    "question": "A programme has CAD for a proprietary robotic tool and wants it converted into a validated SimReady asset."
+  },
+  {
+    "expected_behavior": [
+      "selects the NuRec asset-harvester route for reusable object extraction",
+      "requires source logs, views, rights, and object-selection evidence",
+      "requires validation before using harvested assets in synthetic data or SimReady workflows",
+      "routes dataset split and leakage questions to world-model-data-factory"
+    ],
+    "expected_script": null,
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer uses Asset Harvester for object-level 3D asset extraction and requires provenance, validation, and split-leakage protection before downstream use.",
+    "id": "nar-asset-harvester-route",
+    "question": "We need reusable 3D assets for objects that appear repeatedly in captured field video."
+  },
+  {
+    "expected_behavior": [
+      "refuses reconstruction or generation until permitted use is established",
+      "records rights evidence as blocking",
+      "does not invent approvals, licences, asset names, or derivative-use permissions",
+      "routes rights and retention questions to governance-provenance-lead"
+    ],
+    "expected_script": null,
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer stops before derivative asset creation when rights are unknown and routes the issue to governance.",
+    "id": "nar-rights-ambiguity-stop",
+    "question": "We have partner-captured videos and CAD, but permitted derivative use is not documented. Generate assets anyway."
+  },
+  {
+    "expected_behavior": [
+      "selects physical-ai-video-data-augmentation or physical-ai-defect-image-generation only when the objective matches",
+      "requires generated evidence to remain linked to source lineage",
+      "protects validation and holdout slices from derivative leakage",
+      "routes dataset release and split policy to world-model-data-factory"
+    ],
+    "expected_script": null,
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer treats synthetic variants as derivative data requiring lineage, split control, review, and data-factory handoff.",
+    "id": "nar-synthetic-leakage-control",
+    "question": "Use reconstructed scenes and generated defects to fill gaps in the test set and training set at the same time."
+  },
+  {
+    "expected_behavior": [
+      "selects ovrtx_headless_rendering when previews, videos, simulator frames, or sensor outputs are requested",
+      "names the relevant OVRTX skills for project setup, renderer creation, USD loading, render settings, stepping, warmup, status, and render-output reading",
+      "adds lidar, radar, semantic labels, or render-product device pinning skills when those outputs are needed",
+      "does not describe OVRTX as a NIM and records it as a Python or C SDK rendering surface"
+    ],
+    "expected_script": null,
+    "expected_skill": "neural-asset-reconstruction",
+    "ground_truth": "The correct answer routes headless rendering through NVIDIA-Omniverse/ovrtx skills, names the concrete setup and render-output skills, and treats produced frames, videos, and sensor outputs as governed evidence.",
+    "id": "nar-ovrtx-headless-rendering",
+    "question": "We need headless preview images, rendered videos, and lidar or semantic simulation outputs for generated USD assets."
+  }
+]

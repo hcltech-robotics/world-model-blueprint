@@ -1,0 +1,3 @@
+display_name: "Infrastructure orchestration lead"
+short_description: "Selects and governs execution across local GPUs, Brev, OSMO, B200-class Slurm, Megatron, Kubernetes, Ray, and cloud launchers."
+default_prompt: "Use Infrastructure orchestration lead to produce execution lane decision and run plan from authoritative programme evidence."

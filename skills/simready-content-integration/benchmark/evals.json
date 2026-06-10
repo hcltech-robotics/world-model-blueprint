@@ -1,0 +1,80 @@
+[
+  {
+    "expected_behavior": [
+      "identifies business differentiators requiring high-fidelity treatment",
+      "defines OpenUSD or SimReady conversion and validation steps",
+      "records rights and source asset evidence",
+      "routes dataset and synthetic generation handoff to world-model-data-factory"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "simready-content-integration",
+    "ground_truth": "The correct answer centres the SimReady asset manifest, maps visual, geometric, physical, sensor, semantic, and behavioural fidelity, and links assets to scenarios, synthetic data, and evaluation.",
+    "id": "simready-asset-manifest-plan",
+    "question": "We have CAD, material references, measured motion ranges, and simulator requirements for the key physical assets. Build the SimReady plan."
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "simready-content-integration",
+    "ground_truth": "The correct answer stops before conversion for programme use and requires a rights record that covers simulation, derivative assets, and synthetic data generation.",
+    "id": "simready-rights-blocker",
+    "question": "The supplier CAD is useful but the licence does not mention simulation or synthetic data. Can we still convert it?"
+  },
+  {
+    "expected_behavior": [
+      "separates visual, geometric, material, contact, dynamic, and sensor fidelity",
+      "requires validation against measured behaviour or accepted reference evidence",
+      "does not approve SimReady status based on appearance alone",
+      "routes residual model impact to evaluation-safety-lead"
+    ],
+    "expected_script": null,
+    "expected_skill": "simready-content-integration",
+    "ground_truth": "The correct answer treats visual correctness as insufficient, requires physics and sensor fidelity targets, and connects failed validation to scenario and dataset updates.",
+    "id": "simready-physics-fidelity",
+    "question": "The asset looks right but contact behaviour and sensor returns do not match real measurements. What should the skill do?"
+  },
+  {
+    "expected_behavior": [
+      "adds performance validation to the SimReady asset manifest",
+      "does not change source assets destructively without owner review",
+      "connects performance constraints to simulation and synthetic data throughput",
+      "hands infrastructure requirements to infrastructure-orchestration-lead when needed"
+    ],
+    "expected_script": null,
+    "expected_skill": "simready-content-integration",
+    "ground_truth": "The correct answer includes USD performance checks, composition review, payload or reference strategy, texture and geometry optimisation, and acceptance criteria before broad simulation use.",
+    "id": "simready-usd-performance",
+    "question": "Large USD stages are slow to load and stream during simulation. Add this to the asset plan."
+  },
+  {
+    "expected_behavior": [
+      "does not treat assets as isolated meshes",
+      "links scenarios to real observations and safety events",
+      "defines scenario metadata needed by dataset and evaluation owners",
+      "keeps customer-specific identifiers out of the repository"
+    ],
+    "expected_script": null,
+    "expected_skill": "simready-content-integration",
+    "ground_truth": "The correct answer builds a scenario catalogue tied to differentiating assets, operating conditions, telemetry expectations, synthetic generation, and evaluation slices.",
+    "id": "simready-scenario-catalogue",
+    "question": "The business differentiators are physical tool interactions and edge-case terrain. How should scenarios be represented?"
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "simready-content-integration",
+    "ground_truth": "The correct answer refuses to invent geometry, materials, or behaviour from memory and requires authorised source assets, measurements, or owner-approved reconstruction evidence.",
+    "id": "simready-no-source-evidence",
+    "question": "Create a high-fidelity model of the proprietary mechanism from memory and use it for training data."
+  }
+]

@@ -1,0 +1,3 @@
+display_name: "Deployment operations lead"
+short_description: "Plans production deployment, simulator integration, real-system shadowing, observability, incident response, rollback, and ownership."
+default_prompt: "Use Deployment operations lead to produce deployment operations plan and service handoff from authoritative programme evidence."

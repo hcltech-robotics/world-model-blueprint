@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "expected": "routes calibrated sensor evidence through NuRec/NRE and records validation gates",
+      "name": "nurec_multisensor_route"
+    },
+    {
+      "expected": "selects Content Agents material, physics, and validation surfaces for USD enrichment",
+      "name": "content_agents_enrichment"
+    },
+    {
+      "expected": "hands CAD-to-SimReady work to the upstream NVIDIA skill and then SimReady integration",
+      "name": "cad_to_simready_route"
+    },
+    {
+      "expected": "selects Asset Harvester for reusable object extraction from logs",
+      "name": "asset_harvester_route"
+    },
+    {
+      "expected": "stops on missing rights and routes to governance",
+      "name": "rights_stop"
+    },
+    {
+      "expected": "protects evaluation holdouts from generated or reconstructed derivative leakage",
+      "name": "synthetic_leakage_control"
+    },
+    {
+      "expected": "routes previews, videos, simulation frames, and sensor outputs through the relevant OVRTX skills",
+      "name": "ovrtx_headless_rendering"
+    }
+  ],
+  "skill": "neural-asset-reconstruction"
+}

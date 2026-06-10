@@ -1,0 +1,80 @@
+[
+  {
+    "expected_behavior": [
+      "separates real, simulated, synthetic, safety-event, and edge-case slices",
+      "defines corruption, duplication, timing, calibration, caption, label, and action-alignment checks",
+      "includes split protection before enrichment creates derivative leakage",
+      "hands model-specific recipe questions to cosmos-post-training-lead"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "world-model-data-factory",
+    "ground_truth": "The correct answer produces a dataset-manifest-centred plan for source lineage, modalities, permitted use, privacy classification, split policy, curation, enrichment, quality gates, and release evidence.",
+    "id": "wmdf-multimodal-curation-plan",
+    "question": "Create a data factory plan for video, actions, telemetry, captions, simulator rollouts, and synthetic variants for a Cosmos-class adaptation."
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "world-model-data-factory",
+    "ground_truth": "The correct answer stops before dataset release, distinguishes source classes, and requires permitted-use and lineage review before training or synthetic derivative generation.",
+    "id": "wmdf-rights-ambiguity-stop",
+    "question": "Some videos are from partner deployments and some are generated in simulation. We do not yet know permitted use. Build the dataset anyway."
+  },
+  {
+    "expected_behavior": [
+      "detects derivative leakage across real, captioned, simulated, and augmented views",
+      "requires group-level split keys sourced from authoritative lineage",
+      "keeps stress and safety holdout slices separate from training",
+      "records the split policy in the dataset manifest"
+    ],
+    "expected_script": null,
+    "expected_skill": "world-model-data-factory",
+    "ground_truth": "The correct answer treats derivatives of the same underlying run as linked units that must not cross train, validation, test, stress, or holdout boundaries.",
+    "id": "wmdf-split-leakage-risk",
+    "question": "The same machine run appears in raw video, captioned clips, simulated replay, and augmented clips. How should the split be handled?"
+  },
+  {
+    "expected_behavior": [
+      "names enrichment lanes without claiming they have already run",
+      "requires human review or sampling for generated labels and captions",
+      "records model/tool provenance for derivative annotations",
+      "keeps generated metadata tied to source lineage and permitted use"
+    ],
+    "expected_script": null,
+    "expected_skill": "world-model-data-factory",
+    "ground_truth": "The correct answer can use VLM, embedding, TAO annotation, VSS-style summaries, human review, and Physical AI video augmentation, while recording provenance and review gates for generated annotations.",
+    "id": "wmdf-tao-vlm-enrichment",
+    "question": "We need object labels, dense captions, and video summaries before post-training. Which enrichment lanes belong in the data factory?"
+  },
+  {
+    "expected_behavior": [
+      "does not overclaim suitability for action-conditioned training",
+      "marks missing action semantics and timing alignment explicitly",
+      "allows a narrower video-only path only if the intake objective permits it",
+      "hands schema compatibility to cosmos-post-training-lead"
+    ],
+    "expected_script": null,
+    "expected_skill": "world-model-data-factory",
+    "ground_truth": "The correct answer distinguishes video-only adaptation from action-conditioned rollouts, marks action schema as blocking for action-conditioned work, and routes schema alignment to post-training.",
+    "id": "wmdf-action-schema-gap",
+    "question": "The videos are good, but the action trace schema is missing. Can the generator SFT start with video only?"
+  },
+  {
+    "expected_behavior": [
+      "warns against overwhelming real coverage with synthetic variants",
+      "requires separate real, synthetic, and mixed evaluation slices",
+      "connects simulation scenarios to observed real-world failure modes",
+      "routes physical fidelity questions to simready-content-integration"
+    ],
+    "expected_script": null,
+    "expected_skill": "world-model-data-factory",
+    "ground_truth": "The correct answer does not accept synthetic dominance without evidence. It separates real and synthetic performance, requires coverage analysis, and defines gates for synthetic-to-real usefulness.",
+    "id": "wmdf-synthetic-balance",
+    "question": "Synthetic variation is cheaper than field collection. Plan to use mostly synthetic data for the model."
+  }
+]

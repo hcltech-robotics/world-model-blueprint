@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="620" viewBox="0 0 1360 620" role="img" aria-labelledby="title desc">
+  <title id="title">Inference services</title>
+  <desc id="desc">A schematic for inference backend choices and integration targets for a Cosmos-class world model.</desc>
+  <defs>
+    <style>
+      .bg { fill: transparent; }
+      .box { fill: #0a100c; stroke: #3d4a42; stroke-width: 2; }
+      .boxHot { fill: #0b1608; stroke: #76b900; stroke-width: 2.3; }
+      .inner { fill: #0d130f; stroke: #7d8780; stroke-width: 1.9; }
+      .innerHot { fill: #0d1809; stroke: #76b900; stroke-width: 1.9; }
+      .label { fill: #edf3ef; font-family: Aptos, Helvetica, sans-serif; font-size: 20px; font-weight: 680; }
+      .small { fill: #c6cec8; font-family: Aptos, Helvetica, sans-serif; font-size: 13px; font-weight: 620; }
+      .line { stroke: #e6ece8; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .greenLine { stroke: #76b900; stroke-width: 2.4; fill: none; marker-end: url(#arrowGreen); }
+    </style>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#e6ece8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#76b900"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1360" height="620"/>
+  <rect class="box" x="70" y="236" width="250" height="150" rx="8"/>
+  <text class="label" x="195.0" y="279" text-anchor="middle">Checkpoint</text>
+  <rect class="inner" x="98" y="308" width="194" height="26" rx="4"/>
+  <text class="small" x="195.0" y="325.5" text-anchor="middle" style="font-size:13px">Cosmos adapter</text>
+  <rect class="inner" x="98" y="342" width="194" height="26" rx="4"/>
+  <text class="small" x="195.0" y="359.5" text-anchor="middle" style="font-size:13px">export policy</text>
+  <rect class="box" x="440" y="216" width="250" height="190" rx="8"/>
+  <text class="label" x="565.0" y="259" text-anchor="middle">Backend selector</text>
+  <rect class="inner" x="468" y="288" width="194" height="25" rx="4"/>
+  <text class="small" x="565.0" y="305.0" text-anchor="middle" style="font-size:13px">latency</text>
+  <rect class="inner" x="468" y="325" width="194" height="25" rx="4"/>
+  <text class="small" x="565.0" y="342.0" text-anchor="middle" style="font-size:13px">support</text>
+  <rect class="inner" x="468" y="362" width="194" height="25" rx="4"/>
+  <text class="small" x="565.0" y="379.0" text-anchor="middle" style="font-size:13px">closed loop</text>
+  <path class="line" d="M320 311 L440 311"/>
+  <rect class="boxHot" x="810" y="44" width="248" height="108" rx="8"/>
+  <text class="label" x="934.0" y="82" text-anchor="middle">NIM</text>
+  <rect class="inner" x="838" y="98" width="192" height="36" rx="4"/>
+  <text class="small" x="934.0" y="120.5" text-anchor="middle" style="font-size:13px">Production API</text>
+  <path class="greenLine" d="M690 311 L752 311 L752 98 L810 98"/>
+  <rect class="boxHot" x="810" y="182" width="248" height="108" rx="8"/>
+  <text class="label" x="934.0" y="220" text-anchor="middle">FlashDreams</text>
+  <rect class="inner" x="838" y="236" width="192" height="36" rx="4"/>
+  <text class="small" x="934.0" y="258.5" text-anchor="middle" style="font-size:13px">real-time loop</text>
+  <path class="greenLine" d="M690 311 L752 311 L752 236 L810 236"/>
+  <rect class="boxHot" x="810" y="320" width="248" height="108" rx="8"/>
+  <text class="label" x="934.0" y="358" text-anchor="middle">Dynamo</text>
+  <rect class="inner" x="838" y="374" width="192" height="36" rx="4"/>
+  <text class="small" x="934.0" y="396.0" text-anchor="middle" style="font-size:12px">cluster service</text>
+  <path class="line" d="M690 311 L752 311 L752 374 L810 374"/>
+  <rect class="box" x="810" y="458" width="248" height="120" rx="8"/>
+  <text class="label" x="934.0" y="501" text-anchor="middle">Custom</text>
+  <rect class="inner" x="838" y="530" width="192" height="16" rx="4"/>
+  <text class="small" x="934.0" y="541.0" text-anchor="middle" style="font-size:10px">vLLM</text>
+  <rect class="inner" x="838" y="554" width="192" height="16" rx="4"/>
+  <text class="small" x="934.0" y="565.0" text-anchor="middle" style="font-size:10px">Transformers</text>
+  <path class="line" d="M690 311 L752 311 L752 518 L810 518"/>
+  <rect class="box" x="1136" y="230" width="156" height="166" rx="8"/>
+  <text class="label" x="1214.0" y="273" text-anchor="middle">Integrate</text>
+  <rect class="innerHot" x="1164" y="302" width="100" height="17" rx="4"/>
+  <text class="small" x="1214.0" y="314.0" text-anchor="middle" style="font-size:11px">Isaac Sim</text>
+  <rect class="inner" x="1164" y="331" width="100" height="17" rx="4"/>
+  <text class="small" x="1214.0" y="343.0" text-anchor="middle" style="font-size:11px">shadow</text>
+  <rect class="inner" x="1164" y="360" width="100" height="17" rx="4"/>
+  <text class="small" x="1214.0" y="372.0" text-anchor="middle" style="font-size:11px">real</text>
+  <path class="greenLine" d="M1058 98 L1094 98 L1094 313 L1136 313"/>
+  <path class="greenLine" d="M1058 236 L1094 236 L1094 313 L1136 313"/>
+  <path class="line" d="M1058 374 L1094 374 L1094 313 L1136 313"/>
+</svg>

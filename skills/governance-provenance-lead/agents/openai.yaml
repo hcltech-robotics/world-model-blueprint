@@ -1,0 +1,3 @@
+display_name: "Governance provenance lead"
+short_description: "Maintains governance, provenance, rights, licence, privacy, export-control, safety, and audit evidence across the world-model lifecycle."
+default_prompt: "Use Governance provenance lead to produce governance record and audit evidence map from authoritative programme evidence."

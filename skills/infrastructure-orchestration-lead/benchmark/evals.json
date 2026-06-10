@@ -1,0 +1,80 @@
+[
+  {
+    "expected_behavior": [
+      "selects Brev or local GPU only for pilot-scale work",
+      "uses ephemeral storage for caches, logs, checkpoints, and generated artefacts",
+      "keeps secrets in environment or approved secret stores",
+      "does not claim training quality or deployment readiness from a smoke test"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "infrastructure-orchestration-lead",
+    "ground_truth": "The correct answer recommends the Brev lane for small pilot work, uses the Launchable artefact root and cache policy, and records outputs as review evidence rather than production claims.",
+    "id": "infra-brev-launchable-pilot",
+    "question": "Route a pilot data-factory and post-training smoke test that can run on Brev with generated artefacts outside the repository."
+  },
+  {
+    "expected_behavior": [
+      "does not invent cluster names, partitions, accounts, or job ids",
+      "records node count, GPU memory, workload type, and checkpoint policy in the run request",
+      "requires an infrastructure owner to resolve the concrete launch contract",
+      "keeps the Slurm template parameterised until authoritative values exist"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "infrastructure-orchestration-lead",
+    "ground_truth": "The correct answer routes to B200-class Slurm and Megatron where justified, requiring scheduler, storage, image, checkpoint, resume, and monitoring evidence.",
+    "id": "infra-b200-slurm-large-run",
+    "question": "The training run requires multiple B200 nodes and checkpoint resiliency. Prepare the execution lane decision."
+  },
+  {
+    "expected_behavior": [
+      "selects OSMO when multi-stage orchestration or hardware-in-the-loop is required",
+      "defines artefact boundaries between data, simulation, training, evaluation, and edge stages",
+      "requires stop gates for safety and deployment authority",
+      "routes simulator and real-system integration to deployment-operations-lead"
+    ],
+    "expected_script": null,
+    "expected_skill": "infrastructure-orchestration-lead",
+    "ground_truth": "The correct answer recommends OSMO or equivalent workflow orchestration and records stage inputs, outputs, gates, and failure handling.",
+    "id": "infra-osmo-hil-workflow",
+    "question": "Data generation, simulation, training, evaluation, and hardware-in-the-loop steps must be orchestrated together."
+  },
+  {
+    "expected_behavior": [
+      "recognises requires_realtime as an inference-routing signal",
+      "does not treat training throughput as the same as real-time serving latency",
+      "names cache, precision, graph, and rollback controls as serving concerns",
+      "hands endpoint design to real-time-inference-lead"
+    ],
+    "expected_script": null,
+    "expected_skill": "infrastructure-orchestration-lead",
+    "ground_truth": "The correct answer adds a real-time inference lane and routes backend selection to real-time-inference-lead, with FlashDreams considered for self-forcing streaming needs.",
+    "id": "infra-realtime-flashdreams-route",
+    "question": "The run request requires real-time interactive world-model inference during simulation."
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "infrastructure-orchestration-lead",
+    "ground_truth": "The correct answer blocks the launch plan until shared storage or staged data access is defined for all nodes.",
+    "id": "infra-local-path-multinode-blocker",
+    "question": "Use a workstation-local path for the dataset on an eight-node training job."
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "infrastructure-orchestration-lead",
+    "ground_truth": "The correct answer refuses to launch and routes the missing rights evidence to governance-provenance-lead before infrastructure execution.",
+    "id": "infra-missing-rights-before-run",
+    "question": "The scheduler is ready, but the dataset rights record is missing. Launch anyway and fix governance later."
+  }
+]

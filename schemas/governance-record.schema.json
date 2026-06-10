@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Governance record for rights, lineage, policy, and promotion evidence.",
+  "properties": {
+    "access_policy": {
+      "description": "Access controls for data, models, logs, and operational artefacts.",
+      "type": "string"
+    },
+    "approval_gates": {
+      "description": "Human review and acceptance gates.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "artefact_lineage": {
+      "description": "Links between source data, datasets, runs, checkpoints, evaluations, and deployments.",
+      "type": "string"
+    },
+    "export_control": {
+      "description": "Export-control classification and restrictions.",
+      "type": "string"
+    },
+    "licence_review": {
+      "description": "Model, dataset, code, asset, and third-party licence position.",
+      "type": "string"
+    },
+    "privacy_review": {
+      "description": "Privacy, medical, personal-data, and contractual sensitivity review.",
+      "type": "string"
+    },
+    "retention_policy": {
+      "description": "Retention, deletion, and derivative artefact policy.",
+      "type": "string"
+    },
+    "risk_acceptance": {
+      "description": "Residual risks accepted for the requested deployment scope.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "artefact_lineage",
+    "licence_review",
+    "privacy_review",
+    "export_control",
+    "retention_policy",
+    "access_policy",
+    "approval_gates",
+    "risk_acceptance"
+  ],
+  "title": "Governance record",
+  "type": "object"
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Training run contract for Cosmos-class post-training.",
+  "properties": {
+    "base_model": {
+      "description": "Source model family, checkpoint, and licence.",
+      "type": "string"
+    },
+    "checkpoint_policy": {
+      "description": "Checkpoint cadence, retention, resume, and export policy.",
+      "type": "string"
+    },
+    "dataset_manifest": {
+      "description": "Dataset manifest path or controlled record reference.",
+      "type": "string"
+    },
+    "execution_lane": {
+      "enum": [
+        "local-gpu",
+        "brev",
+        "b200-slurm",
+        "megatron",
+        "kubernetes",
+        "ray",
+        "osmo"
+      ],
+      "type": "string"
+    },
+    "model_surface": {
+      "enum": [
+        "reasoner",
+        "generator",
+        "action_conditioned",
+        "ancillary"
+      ],
+      "type": "string"
+    },
+    "parallelism": {
+      "description": "Tensor, pipeline, context, expert, data, FSDP, or sharding plan.",
+      "type": "string"
+    },
+    "recipe": {
+      "description": "Cosmos Framework, Megatron, TAO, or other approved recipe.",
+      "type": "string"
+    },
+    "secrets_policy": {
+      "description": "Secret handles and environment policy; values must not be recorded.",
+      "type": "string"
+    },
+    "serving_target": {
+      "description": "Expected serving lane after export.",
+      "enum": [
+        "nim",
+        "flashdreams",
+        "dynamo",
+        "cosmos-framework",
+        "vllm",
+        "transformers",
+        "edge"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "base_model",
+    "model_surface",
+    "dataset_manifest",
+    "recipe",
+    "execution_lane",
+    "parallelism",
+    "checkpoint_policy",
+    "serving_target",
+    "secrets_policy"
+  ],
+  "title": "Training run manifest",
+  "type": "object"
+}

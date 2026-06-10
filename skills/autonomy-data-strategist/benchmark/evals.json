@@ -1,0 +1,80 @@
+[
+  {
+    "expected_behavior": [
+      "identifies the programme intake manifest as the primary artefact",
+      "separates reasoner, generator, action-conditioned, retrieval, and ancillary perception surfaces",
+      "records available evidence without creating dataset names or identifiers",
+      "hands curation work to world-model-data-factory and assets to simready-content-integration"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "autonomy-data-strategist",
+    "ground_truth": "The correct answer frames the target capability, embodiment, operating domain, intended model outputs, deployment scope, regulatory context, and safety authority before proposing data-factory or training work.",
+    "id": "ads-intake-scope-and-surface",
+    "question": "We have surgical robotics video, action traces, simulator scenes, and operator notes. Frame the programme intake for adapting a Cosmos-class world model."
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "autonomy-data-strategist",
+    "ground_truth": "The correct answer does not proceed to training. It narrows the objective and marks missing evidence for target capability, embodiment, operating domain, intended outputs, deployment scope, regulatory context, and safety authority.",
+    "id": "ads-vague-objective-clarification",
+    "question": "Build us a world model for autonomy. We will decide the details later."
+  },
+  {
+    "expected_behavior": [
+      "flags protected health information and medical-device context for privacy, legal, quality, and regulatory review",
+      "does not decide applicability of a regulatory framework without the responsible owner",
+      "requires permitted-use records and de-identification or exclusion strategy",
+      "routes lineage and approval work to governance-provenance-lead"
+    ],
+    "expected_script": null,
+    "expected_skill": "autonomy-data-strategist",
+    "ground_truth": "The correct answer treats rights, privacy, consent, quality-system, and regulatory classification as blocking evidence before training or derivative dataset creation.",
+    "id": "ads-regulated-medical-boundary",
+    "question": "The programme may involve surgical videos and protected patient context. Can we treat all collected material as training data?"
+  },
+  {
+    "expected_behavior": [
+      "identifies real, simulated, CAD, telemetry, action, and environmental evidence classes",
+      "calls out seasonality, geography, weather, soil, crop, and implement variation as coverage questions",
+      "routes curation and split policy to world-model-data-factory",
+      "routes implement and terrain assets to simready-content-integration"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "autonomy-data-strategist",
+    "ground_truth": "The correct answer maps field evidence, machine embodiment, terrain and weather operating domain, action and telemetry needs, SimReady asset requirements, and safety authority without claiming the evidence is complete.",
+    "id": "ads-agricultural-field-evidence",
+    "question": "For autonomous agricultural machinery, we have multi-season field video, CAN telemetry, implement CAD, and simulator terrain variants. What should the intake decide?"
+  },
+  {
+    "expected_behavior": [
+      "does not invent names, identifiers, datasets, cluster details, endpoints, approvals, or benchmark values",
+      "states missing evidence explicitly",
+      "names the human review gate or owner needed before progressing",
+      "routes any downstream work to the correct next skill"
+    ],
+    "expected_script": null,
+    "expected_skill": "autonomy-data-strategist",
+    "ground_truth": "The correct answer refuses to skip intake and rights evidence. It can create or request the intake manifest but must not recommend training before permitted use and safety scope are known.",
+    "id": "ads-training-request-before-rights",
+    "question": "Skip the intake and make the training plan. The data rights will be sorted out later."
+  },
+  {
+    "expected_behavior": [
+      "uses downstream skill names rather than generic team labels",
+      "separates blocking and non-blocking gaps",
+      "keeps the intake as the decision record for target capability and scope",
+      "does not create owner names or approval records"
+    ],
+    "expected_script": "scripts/run-checks.sh",
+    "expected_skill": "autonomy-data-strategist",
+    "ground_truth": "The correct answer routes CAD fidelity to simready-content-integration, action schema and dataset alignment to world-model-data-factory and cosmos-post-training-lead, and promotion criteria to evaluation-safety-lead.",
+    "id": "ads-downstream-routing",
+    "question": "The intake manifest is mostly complete, but CAD fidelity, action schema, and safety promotion criteria are unresolved. Who owns each gap?"
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Programme intake contract for an autonomy world-model engagement.",
+  "properties": {
+    "autonomy_domain": {
+      "description": "Operating domain such as surgical robotics, agricultural machinery, mobile robotics, industrial automation, or autonomous vehicles.",
+      "type": "string"
+    },
+    "deployment_scope": {
+      "description": "Approved scope for analysis, simulation, shadow, advisory, or operational use.",
+      "type": "string"
+    },
+    "embodiment": {
+      "description": "Robot, machine, vehicle, instrument, or physical system being represented.",
+      "type": "string"
+    },
+    "intended_model_outputs": {
+      "description": "Outputs expected from the world model.",
+      "items": {
+        "enum": [
+          "caption",
+          "forecast",
+          "rollout",
+          "action_prediction",
+          "inverse_dynamics",
+          "synthetic_generation",
+          "risk_score",
+          "review_signal"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "operating_domain": {
+      "description": "Physical, temporal, environmental, and user conditions in scope.",
+      "type": "string"
+    },
+    "regulatory_context": {
+      "description": "Known regulatory, quality, safety, privacy, and standards context.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "safety_authority": {
+      "description": "Named responsible owner or governance body for safety acceptance.",
+      "type": "string"
+    },
+    "target_capability": {
+      "description": "Operational capability the world model must support.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "autonomy_domain",
+    "target_capability",
+    "embodiment",
+    "operating_domain",
+    "intended_model_outputs",
+    "deployment_scope",
+    "regulatory_context",
+    "safety_authority"
+  ],
+  "title": "Programme intake manifest",
+  "type": "object"
+}

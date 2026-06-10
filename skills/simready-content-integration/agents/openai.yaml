@@ -1,0 +1,3 @@
+display_name: "SimReady content integration"
+short_description: "Plans conversion and validation of CAD, OpenUSD, SimReady assets, Omniverse scenes, Isaac Sim scenarios, and synthetic-data pipelines."
+default_prompt: "Use SimReady content integration to produce simulation asset integration plan and simready asset manifest from authoritative programme evidence."

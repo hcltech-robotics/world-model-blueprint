@@ -1,0 +1,3 @@
+display_name: "Real-time inference lead"
+short_description: "Plans serving through NIM, FlashDreams, Dynamo, Cosmos Framework inference, vLLM, Transformers, and edge or simulator runtimes."
+default_prompt: "Use Real-time inference lead to produce inference service manifest and acceleration plan from authoritative programme evidence."

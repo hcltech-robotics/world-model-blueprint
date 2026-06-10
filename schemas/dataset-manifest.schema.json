@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Dataset contract for world-model training, evaluation, and simulation evidence.",
+  "properties": {
+    "action_schema": {
+      "description": "Action dimensionality, units, coordinate frame, timing, and embodiment mapping.",
+      "type": "string"
+    },
+    "calibration_record": {
+      "description": "Sensor calibration, synchronisation, and coordinate-frame evidence.",
+      "type": "string"
+    },
+    "dataset_owner": {
+      "description": "Responsible owner for source data and permitted use.",
+      "type": "string"
+    },
+    "lineage": {
+      "description": "Source, transformations, generated derivatives, and review chain.",
+      "type": "string"
+    },
+    "modalities": {
+      "description": "Modalities included in the dataset.",
+      "items": {
+        "enum": [
+          "video",
+          "image",
+          "depth",
+          "audio",
+          "telemetry",
+          "action_trace",
+          "openusd",
+          "simulation",
+          "label",
+          "caption"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "permitted_use": {
+      "description": "Permitted use for training, evaluation, simulation, monitoring, or audit.",
+      "items": {
+        "enum": [
+          "training",
+          "evaluation",
+          "simulation",
+          "monitoring",
+          "audit"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "privacy_classification": {
+      "description": "Privacy, medical, export-control, contractual, or safety sensitivity.",
+      "type": "string"
+    },
+    "quality_gates": {
+      "description": "Dataset quality gates applied before release.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "split_policy": {
+      "description": "Scenario, time, platform, site, or operator separation policy.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "dataset_owner",
+    "modalities",
+    "permitted_use",
+    "lineage",
+    "privacy_classification",
+    "split_policy",
+    "quality_gates"
+  ],
+  "title": "Dataset manifest",
+  "type": "object"
+}

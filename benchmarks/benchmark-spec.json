@@ -1,0 +1,34 @@
+{
+  "benchmarks": [
+    {
+      "name": "repository_validation",
+      "required": true,
+      "surface": "repository",
+      "threshold": "all checks pass"
+    },
+    {
+      "name": "skill_packaging_depth",
+      "required": true,
+      "surface": "skills",
+      "threshold": "each skill has core files, references, evals, scripts, and benchmark metadata"
+    },
+    {
+      "name": "skill_eval_suite_validation",
+      "required": true,
+      "surface": "skills",
+      "threshold": "each skill has benchmark/evals.json with NVIDIA-shaped eval scenarios"
+    },
+    {
+      "name": "schema_roundtrip",
+      "required": true,
+      "surface": "manifests",
+      "threshold": "skeleton manifests validate after required evidence is supplied"
+    },
+    {
+      "name": "execution_lane_routing",
+      "required": true,
+      "surface": "infrastructure",
+      "threshold": "pilot, large, massive, real-time, and workflow-orchestrated cases route deterministically"
+    }
+  ]
+}

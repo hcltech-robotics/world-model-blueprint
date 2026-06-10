@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Contract for neural reconstruction, harvested assets, Content Agents enrichment, and SimReady handoff.",
+  "properties": {
+    "asset_objective": {
+      "description": "The physical-world asset, scene, object class, or environment capability that must be reconstructed or created.",
+      "type": "string"
+    },
+    "content_agent_plan": {
+      "description": "Material, physics, texture, and validation agent steps required for USD enrichment.",
+      "items": {
+        "enum": [
+          "material-agent",
+          "physics-agent",
+          "texture-agent",
+          "validation-agent",
+          "not_applicable"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "nim_service_surface": {
+      "description": "NIM or OpenAI-compatible service surface used for VLM, LLM, captioning, validation, or agent operation.",
+      "type": "string"
+    },
+    "reconstruction_route": {
+      "description": "Selected reconstruction or asset-creation lane.",
+      "enum": [
+        "cad_to_simready",
+        "ncore_to_nre",
+        "asset_harvester",
+        "content_agents_enrichment",
+        "ovrtx_headless_rendering",
+        "video_augmentation",
+        "defect_generation",
+        "manual_review_required"
+      ],
+      "type": "string"
+    },
+    "rights_record": {
+      "description": "Ownership, licence, capture consent, permitted-use, and retention evidence for the source and derivative assets.",
+      "type": "string"
+    },
+    "simready_handoff": {
+      "description": "Expected downstream OpenUSD or SimReady asset manifest path, controlled storage handle, or review gate.",
+      "type": "string"
+    },
+    "source_evidence": {
+      "description": "Authoritative source evidence classes available for the route.",
+      "items": {
+        "enum": [
+          "camera",
+          "lidar",
+          "radar",
+          "depth",
+          "stereo",
+          "imu",
+          "telemetry",
+          "actions",
+          "cad",
+          "openusd",
+          "video",
+          "reference_images",
+          "simulation_scene",
+          "human_review"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "upstream_skill_routes": {
+      "description": "NVIDIA/skills entries or upstream skill bundles that should be invoked for this asset lane.",
+      "items": {
+        "enum": [
+          "physical-ai-neural-reconstruction",
+          "omniverse-cad-to-simready",
+          "physical-ai-video-data-augmentation",
+          "physical-ai-defect-image-generation",
+          "omniverse-realtime-viewer",
+          "omniverse-usd-performance-tuning",
+          "content-agents-material",
+          "content-agents-physics",
+          "content-agents-texture",
+          "content-agents-validation",
+          "ovrtx/project-setup-python",
+          "ovrtx/project-setup-c",
+          "ovrtx/renderer-creation",
+          "ovrtx/loading-usd",
+          "ovrtx/render-settings",
+          "ovrtx/camera-outputs-rt2",
+          "ovrtx/render-product-device-pinning",
+          "ovrtx/stepping-and-rendering",
+          "ovrtx/reading-render-output",
+          "ovrtx/status-queries",
+          "ovrtx/warmup",
+          "ovrtx/configuring-lidar-sensors",
+          "ovrtx/configuring-radar-sensors",
+          "ovrtx/semantic-labels",
+          "ovrtx/reading-sensor-pointclouds",
+          "nurec-index",
+          "ncore",
+          "nre",
+          "asset-harvester",
+          "nurec-fixer"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "validation_gates": {
+      "description": "Quality, physical plausibility, asset validation, render validation, and human-review gates for promotion.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "asset_objective",
+    "source_evidence",
+    "rights_record",
+    "reconstruction_route",
+    "upstream_skill_routes",
+    "content_agent_plan",
+    "nim_service_surface",
+    "validation_gates",
+    "simready_handoff"
+  ],
+  "title": "Neural asset manifest",
+  "type": "object"
+}

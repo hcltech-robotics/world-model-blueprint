@@ -1,0 +1,3 @@
+display_name: "Autonomy data strategist"
+short_description: "Frames the autonomy objective, domain evidence, rights posture, model surface, data gaps, and adaptation path before downstream world-model work begins."
+default_prompt: "Use Autonomy data strategist to produce data adaptation brief and programme intake manifest from authoritative programme evidence."

@@ -1,0 +1,3 @@
+display_name: "World model data factory"
+short_description: "Plans curation, enrichment, annotation, captioning, augmentation, split policy, and dataset release for world-model training and evaluation."
+default_prompt: "Use World model data factory to produce dataset production plan and dataset manifest from authoritative programme evidence."

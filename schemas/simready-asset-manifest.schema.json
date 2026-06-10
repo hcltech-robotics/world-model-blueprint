@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Asset contract for OpenUSD and SimReady assets used in world-model workflows.",
+  "properties": {
+    "asset_class": {
+      "description": "Physical asset category represented by the USD or SimReady artefact.",
+      "type": "string"
+    },
+    "business_differentiator": {
+      "description": "Why this asset or scenario captures important proprietary capability.",
+      "type": "string"
+    },
+    "fidelity_targets": {
+      "description": "Visual, geometric, physical, sensor, semantic, and behavioural fidelity requirements.",
+      "items": {
+        "enum": [
+          "visual",
+          "geometric",
+          "physical",
+          "sensor",
+          "semantic",
+          "behavioural"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "rights_record": {
+      "description": "Ownership, licence, source, and permitted-use evidence.",
+      "type": "string"
+    },
+    "simready_validation": {
+      "description": "Validation checks applied through SimReady, Asset Validator, or equivalent review.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "synthetic_data_use": {
+      "description": "How the asset will be used for synthetic data, scenario replay, or evaluation.",
+      "type": "string"
+    },
+    "usd_location": {
+      "description": "Controlled storage location or repository path for the USD artefact.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_class",
+    "business_differentiator",
+    "usd_location",
+    "rights_record",
+    "fidelity_targets",
+    "simready_validation",
+    "synthetic_data_use"
+  ],
+  "title": "SimReady asset manifest",
+  "type": "object"
+}

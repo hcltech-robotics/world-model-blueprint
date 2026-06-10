@@ -1,0 +1,13 @@
+flowchart LR
+  A[Scope<br/>objective, embodiment, rights, safety] --> B[Data and assets<br/>real logs, OpenUSD, NuRec/NRE, SimReady]
+  B --> C[Adapt<br/>Cosmos Framework, Brev, B200 Slurm, Megatron]
+  C --> D[Serve<br/>NIM, FlashDreams, Dynamo, vLLM]
+  D --> E[Operate<br/>OSMO, Kubernetes/Ray, observability, rollback]
+  E -. sim-to-real evidence .-> B
+
+  G[Agent and governance plane<br/>skills, manifests, eval suites, review gates]
+  G -.-> A
+  G -.-> B
+  G -.-> C
+  G -.-> D
+  G -.-> E

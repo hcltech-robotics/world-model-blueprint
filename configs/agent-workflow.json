@@ -1,0 +1,81 @@
+{
+  "description": "Agent-driven workflow for operating the world model blueprint from programme intake through deployment and governance.",
+  "llm": {
+    "api_key_env": "WMB_LLM_API_KEY",
+    "base_url_env": "WMB_LLM_BASE_URL",
+    "default_base_url": "https://integrate.api.nvidia.com/v1",
+    "default_model": "nvidia/nemotron-3-nano-30b-a3b",
+    "fallback_api_key_env": [
+      "NVIDIA_API_KEY"
+    ],
+    "max_tokens": 4096,
+    "model_env": "WMB_LLM_MODEL",
+    "require_api_key": true,
+    "temperature": 0.2,
+    "timeout_seconds": 180
+  },
+  "name": "world-model-blueprint-agent-workflow",
+  "stages": [
+    {
+      "id": "intake",
+      "instruction": "Turn the autonomy objective and supplied evidence into a precise programme intake, model-surface decision, missing-evidence map, and downstream routing plan.",
+      "name": "Programme intake and evidence strategy",
+      "skill": "autonomy-data-strategist"
+    },
+    {
+      "id": "data-factory",
+      "instruction": "Design the governed real, simulated, and synthetic data factory, including curation, captioning, annotation, split policy, quality gates, and permitted-use controls.",
+      "name": "World model data factory",
+      "skill": "world-model-data-factory"
+    },
+    {
+      "id": "neural-assets",
+      "instruction": "Route neural reconstruction, Content Agents enrichment, OVRTX headless rendering, CAD-to-SimReady conversion, harvested objects, video augmentation, and asset generation to the correct NVIDIA/skills or OVRTX capability with NIM or service-surface decisions, validation gates, and SimReady or data-factory handoff.",
+      "name": "Neural reconstruction and asset creation",
+      "skill": "neural-asset-reconstruction"
+    },
+    {
+      "id": "simready",
+      "instruction": "Identify the business-critical physical differentiators that must become OpenUSD or SimReady assets and define validation, scenario, and synthetic-data requirements and generate them.",
+      "name": "SimReady asset and scenario pipeline",
+      "skill": "simready-content-integration"
+    },
+    {
+      "id": "post-training",
+      "instruction": "Translate the evidence plan into a Cosmos-class post-training plan, including base model surface, recipe, execution lane, checkpoint policy, and evaluation handoff.",
+      "name": "Cosmos-class post-training",
+      "skill": "cosmos-post-training-lead"
+    },
+    {
+      "id": "infrastructure",
+      "instruction": "Route pilot, large, and massive jobs across Brev, B200 Slurm, Megatron, OSMO, Kubernetes, Ray, and local execution with explicit launch and secret-handling controls.",
+      "name": "Infrastructure orchestration",
+      "skill": "infrastructure-orchestration-lead"
+    },
+    {
+      "id": "inference",
+      "instruction": "Choose the inference path and acceleration controls, including NIM, framework inference, Dynamo, FlashDreams, vLLM, Transformers, cache policy, precision, graph capture, and rollback.",
+      "name": "Real-time and batch inference",
+      "skill": "real-time-inference-lead"
+    },
+    {
+      "id": "evaluation",
+      "instruction": "Define evaluation, promotion, safety, regression, failure-review, and model-comparison gates for simulator, shadow, advisory, and production stages.",
+      "name": "Evaluation and safety promotion",
+      "skill": "evaluation-safety-lead"
+    },
+    {
+      "id": "deployment",
+      "instruction": "Connect the model to simulator and real-system integration lanes with service ownership, observability, access control, incident handling, and rollback.",
+      "name": "Deployment operations",
+      "skill": "deployment-operations-lead"
+    },
+    {
+      "id": "governance",
+      "instruction": "Create the governance and provenance record for rights, privacy, export control, retention, access, approval gates, and risk acceptance.",
+      "name": "Governance and provenance",
+      "skill": "governance-provenance-lead"
+    }
+  ],
+  "version": "1.0"
+}

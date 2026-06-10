@@ -1,0 +1,3 @@
+display_name: "Cosmos post-training lead"
+short_description: "Plans Cosmos-class post-training, SFT, action modelling, checkpoint export, evaluation handoff, and serving readiness."
+default_prompt: "Use Cosmos post-training lead to produce training run manifest and post-training plan from authoritative programme evidence."

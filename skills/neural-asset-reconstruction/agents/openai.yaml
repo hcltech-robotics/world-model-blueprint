@@ -1,0 +1,3 @@
+display_name: "Neural asset reconstruction"
+short_description: "Routes neural reconstruction, Content Agents enrichment, CAD-to-SimReady, and asset-generation work to the right NVIDIA/skills capability."
+default_prompt: "Use Neural asset reconstruction to produce a governed upstream NVIDIA/skills invocation plan, service-surface decision, validation gates, and SimReady or data-factory handoff."

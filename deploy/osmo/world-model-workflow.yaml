@@ -1,0 +1,38 @@
+apiVersion: osmo.nvidia.com/v1
+kind: Workflow
+metadata:
+  name: world-model-pipeline
+spec:
+  description: Governed data-to-world-model workflow for autonomy programmes.
+  inputs:
+    programme_manifest: <programme-intake-manifest>
+    dataset_manifest: <dataset-manifest>
+    simready_asset_manifest: <simready-asset-manifest>
+  tasks:
+    - name: validate-manifests
+      image: <tooling-image>
+      command:
+        - bash
+        - -lc
+        - >
+          python3 -m world_model_blueprint.cli validate-manifest --schema schemas/programme-intake-manifest.schema.json --manifest "${PROGRAMME_MANIFEST}" &&
+          python3 -m world_model_blueprint.cli validate-manifest --schema schemas/dataset-manifest.schema.json --manifest "${DATASET_MANIFEST}" &&
+          python3 -m world_model_blueprint.cli validate-manifest --schema schemas/simready-asset-manifest.schema.json --manifest "${SIMREADY_ASSET_MANIFEST}"
+    - name: data-factory
+      image: <data-factory-image>
+      depends_on:
+        - validate-manifests
+      command:
+        - <data-factory-command>
+    - name: training
+      image: <training-image>
+      depends_on:
+        - data-factory
+      command:
+        - <training-command>
+    - name: evaluation
+      image: <evaluation-image>
+      depends_on:
+        - training
+      command:
+        - <evaluation-command>

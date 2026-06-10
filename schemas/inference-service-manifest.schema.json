@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Inference service contract for world-model serving.",
+  "properties": {
+    "acceleration": {
+      "description": "Cache, precision, graph, batching, and parallelism settings.",
+      "items": {
+        "enum": [
+          "bf16",
+          "kv_cache",
+          "ar_cache",
+          "cuda_graph",
+          "context_parallel",
+          "cfg_parallel",
+          "batching",
+          "streaming_decoder",
+          "model_cache"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "access_control": {
+      "description": "Authentication, authorisation, network, and rate-limit controls.",
+      "type": "string"
+    },
+    "backend": {
+      "enum": [
+        "nim",
+        "flashdreams",
+        "dynamo",
+        "cosmos-framework",
+        "vllm",
+        "transformers",
+        "edge"
+      ],
+      "type": "string"
+    },
+    "checkpoint": {
+      "description": "Model artefact and export record.",
+      "type": "string"
+    },
+    "integration_target": {
+      "description": "Simulator, replay system, operator workflow, edge stack, or production endpoint.",
+      "type": "string"
+    },
+    "latency_target": {
+      "description": "Latency, frame-rate, or throughput objective.",
+      "type": "string"
+    },
+    "observability": {
+      "description": "Metrics, logs, traces, quality drift, and safety monitoring.",
+      "type": "string"
+    },
+    "rollback": {
+      "description": "Known rollback model, service version, and operational procedure.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "backend",
+    "checkpoint",
+    "integration_target",
+    "latency_target",
+    "acceleration",
+    "observability",
+    "access_control",
+    "rollback"
+  ],
+  "title": "Inference service manifest",
+  "type": "object"
+}

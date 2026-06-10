@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Evaluation contract for adapted world models.",
+  "properties": {
+    "baseline_model": {
+      "description": "Base or previous promoted model used for comparison.",
+      "type": "string"
+    },
+    "candidate_model": {
+      "description": "Candidate checkpoint or service under evaluation.",
+      "type": "string"
+    },
+    "failure_review": {
+      "description": "Failure taxonomy, owner, and data feedback path.",
+      "type": "string"
+    },
+    "metrics": {
+      "description": "Quantitative metrics and qualitative review criteria.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "promotion_stage": {
+      "enum": [
+        "offline",
+        "simulation",
+        "shadow",
+        "advisory",
+        "limited_operational",
+        "expanded_operational"
+      ],
+      "type": "string"
+    },
+    "regression_suites": {
+      "description": "Held-out scenarios, stress cases, safety events, and prior failures.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "safety_acceptance": {
+      "description": "Safety-owner decision or required review record.",
+      "type": "string"
+    },
+    "slices": {
+      "description": "Scenario, platform, real, synthetic, simulation, site, and time slices.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "candidate_model",
+    "baseline_model",
+    "promotion_stage",
+    "slices",
+    "metrics",
+    "regression_suites",
+    "failure_review",
+    "safety_acceptance"
+  ],
+  "title": "Evaluation manifest",
+  "type": "object"
+}

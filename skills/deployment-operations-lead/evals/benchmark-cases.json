@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "expected": "validates manifest and emits accepted evidence",
+      "name": "complete_manifest"
+    },
+    {
+      "expected": "reports missing evidence and stops before action",
+      "name": "missing_required_evidence"
+    },
+    {
+      "expected": "requires human review",
+      "name": "rights_or_safety_ambiguity"
+    },
+    {
+      "expected": "routes to the correct next skill",
+      "name": "downstream_dependency"
+    }
+  ],
+  "skill": "deployment-operations-lead"
+}

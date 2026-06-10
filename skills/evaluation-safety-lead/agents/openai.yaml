@@ -1,0 +1,3 @@
+display_name: "Evaluation safety lead"
+short_description: "Defines model evaluation, simulator tests, safety gates, regression suites, promotion evidence, and failure feedback loops."
+default_prompt: "Use Evaluation safety lead to produce evaluation manifest and promotion gate plan from authoritative programme evidence."

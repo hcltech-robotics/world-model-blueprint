@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ENV_FILE="${WMB_ENV_FILE:-$ROOT/deploy/.env}"
+
+if [ -f "$ENV_FILE" ]; then
+  set -a
+  # shellcheck disable=SC1090
+  . "$ENV_FILE"
+  set +a
+fi
+
+if [ -d /ephemeral ]; then
+  DEFAULT_ROOT="/ephemeral/world-model-blueprint/${USER:-ubuntu}"
+else
+  DEFAULT_ROOT="$ROOT/artifacts/launchable"
+fi
+
+export WMB_ARTIFACT_ROOT="${WMB_ARTIFACT_ROOT:-$DEFAULT_ROOT/artifacts}"
+export WMB_CACHE_ROOT="${WMB_CACHE_ROOT:-$DEFAULT_ROOT/cache}"
+export WMB_AGENT_WORKFLOW_CONFIG="${WMB_AGENT_WORKFLOW_CONFIG:-configs/agent-workflow.json}"
+export WMB_AGENT_OBJECTIVE="${WMB_AGENT_OBJECTIVE:-Assess the available evidence, identify missing manifests, and produce the next governed workflow plan for a Cosmos-class world-model programme.}"
+
+mkdir -p "$WMB_ARTIFACT_ROOT"/{manifests,reports,logs} "$WMB_CACHE_ROOT"/{huggingface,torch,triton,uv,pip,xdg}
+
+export HF_HOME="$WMB_CACHE_ROOT/huggingface"
+export HF_HUB_CACHE="$HF_HOME/hub"
+export HF_DATASETS_CACHE="$HF_HOME/datasets"
+export TRANSFORMERS_CACHE="$HF_HOME/transformers"
+export TORCH_HOME="$WMB_CACHE_ROOT/torch"
+export TRITON_CACHE_DIR="$WMB_CACHE_ROOT/triton"
+export UV_CACHE_DIR="$WMB_CACHE_ROOT/uv"
+export PIP_CACHE_DIR="$WMB_CACHE_ROOT/pip"
+export XDG_CACHE_HOME="$WMB_CACHE_ROOT/xdg"
+export TMPDIR="$WMB_ARTIFACT_ROOT/logs"
+
+cd "$ROOT"
+
+PYTHON="${PYTHON:-python3}"
+
+make validate
+PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}" "$PYTHON" -m world_model_blueprint.cli skill-audit \
+  --root . \
+  --output "$WMB_ARTIFACT_ROOT/reports/skill-audit.json"
+"$PYTHON" benchmarks/run_benchmarks.py --output "$WMB_ARTIFACT_ROOT/reports/benchmark-report.json"
+
+for schema in schemas/*.schema.json; do
+  name="$(basename "$schema" .schema.json)"
+  manifest="$WMB_ARTIFACT_ROOT/manifests/${name}.json"
+  if [ ! -f "$manifest" ]; then
+    scripts/wmb new-manifest --schema "$schema" --output "$manifest"
+  fi
+done
+
+scripts/wmb readiness-report \
+  --root "$WMB_ARTIFACT_ROOT/manifests" \
+  --output "$WMB_ARTIFACT_ROOT/reports/readiness.md"
+
+AGENT_ARGS=(
+  agent-workflow
+  --config "$WMB_AGENT_WORKFLOW_CONFIG"
+  --objective "$WMB_AGENT_OBJECTIVE"
+  --evidence-root "$WMB_ARTIFACT_ROOT/manifests"
+  --output "$WMB_ARTIFACT_ROOT/reports/agent-workflow.md"
+)
+
+if [ -f "$ENV_FILE" ]; then
+  AGENT_ARGS+=(--env-file "$ENV_FILE")
+fi
+
+REQUIRE_KEY="${WMB_LLM_REQUIRE_API_KEY:-true}"
+REQUIRE_KEY="${REQUIRE_KEY,,}"
+if [ -z "${WMB_LLM_API_KEY:-}" ] && [ -z "${NVIDIA_API_KEY:-}" ] && [ "$REQUIRE_KEY" != "false" ] && [ "$REQUIRE_KEY" != "0" ] && [ "$REQUIRE_KEY" != "no" ]; then
+  AGENT_ARGS+=(--dry-run)
+fi
+
+scripts/wmb "${AGENT_ARGS[@]}"
+
+printf 'Launchable workflow complete.\n'
+printf 'Artefacts: %s\n' "$WMB_ARTIFACT_ROOT"

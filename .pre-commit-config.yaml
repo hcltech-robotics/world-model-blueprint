@@ -1,0 +1,18 @@
+repos:
+  - repo: local
+    hooks:
+      - id: world-model-blueprint-validate
+        name: Validate world model blueprint
+        entry: python3 scripts/validate_repository.py
+        language: system
+        pass_filenames: false
+      - id: world-model-blueprint-format-check
+        name: Check blueprint formatting
+        entry: env PYTHONPATH=src python3 -m world_model_blueprint.cli format --check README.md docs skills benchmarks deploy schemas
+        language: system
+        pass_filenames: false
+      - id: world-model-blueprint-skill-audit
+        name: Audit blueprint skills
+        entry: env PYTHONPATH=src python3 -m world_model_blueprint.cli skill-audit --root . --output artifacts/skill-audit.json
+        language: system
+        pass_filenames: false
