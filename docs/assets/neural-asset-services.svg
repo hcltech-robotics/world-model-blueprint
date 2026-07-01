@@ -6,12 +6,15 @@
       .bg { fill: transparent; }
       .box { fill: #0a100c; stroke: #3d4a42; stroke-width: 2; }
       .boxHot { fill: #0b1608; stroke: #76b900; stroke-width: 2.3; }
+      .boxAccent { fill: #160929; stroke: #5f1ebe; stroke-width: 2.3; }
       .inner { fill: #0d130f; stroke: #7d8780; stroke-width: 1.9; }
       .innerHot { fill: #0d1809; stroke: #76b900; stroke-width: 1.9; }
+      .innerAccent { fill: #1b0c31; stroke: #5f1ebe; stroke-width: 1.9; }
       .label { fill: #edf3ef; font-family: Aptos, Helvetica, sans-serif; font-size: 20px; font-weight: 680; }
       .small { fill: #c6cec8; font-family: Aptos, Helvetica, sans-serif; font-size: 13px; font-weight: 620; }
       .line { stroke: #e6ece8; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
       .greenLine { stroke: #76b900; stroke-width: 2.4; fill: none; marker-end: url(#arrowGreen); }
+      .accentLine { stroke: #5f1ebe; stroke-width: 2.4; fill: none; marker-end: url(#arrowAccent); }
     </style>
     <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
       <path d="M 0 1 L 8 4 L 0 7 z" fill="#e6ece8"/>
@@ -19,46 +22,49 @@
     <marker id="arrowGreen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
       <path d="M 0 1 L 8 4 L 0 7 z" fill="#76b900"/>
     </marker>
+    <marker id="arrowAccent" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 4 L 0 7 z" fill="#5f1ebe"/>
+    </marker>
   </defs>
   <rect class="bg" x="0" y="0" width="1360" height="620"/>
   <rect class="box" x="56" y="220" width="244" height="180" rx="8"/>
   <text class="label" x="178.0" y="263" text-anchor="middle">Evidence</text>
-  <rect class="inner" x="84" y="292" width="188" height="22" rx="4"/>
+  <rect class="innerAccent" x="84" y="292" width="188" height="22" rx="4"/>
   <text class="small" x="178.0" y="307.5" text-anchor="middle" style="font-size:13px">sensors</text>
   <rect class="inner" x="84" y="326" width="188" height="22" rx="4"/>
   <text class="small" x="178.0" y="341.5" text-anchor="middle" style="font-size:13px">CAD/OpenUSD</text>
   <rect class="inner" x="84" y="360" width="188" height="22" rx="4"/>
   <text class="small" x="178.0" y="375.5" text-anchor="middle" style="font-size:13px">video gaps</text>
-  <rect class="box" x="392" y="202" width="252" height="216" rx="8"/>
+  <rect class="boxAccent" x="392" y="202" width="252" height="216" rx="8"/>
   <text class="label" x="518.0" y="245" text-anchor="middle">Route selector</text>
   <rect class="inner" x="420" y="274" width="196" height="34" rx="4"/>
   <text class="small" x="518.0" y="295.5" text-anchor="middle" style="font-size:13px">rights</text>
-  <rect class="inner" x="420" y="320" width="196" height="34" rx="4"/>
+  <rect class="innerAccent" x="420" y="320" width="196" height="34" rx="4"/>
   <text class="small" x="518.0" y="341.0" text-anchor="middle" style="font-size:12px">service surface</text>
   <rect class="inner" x="420" y="366" width="196" height="34" rx="4"/>
   <text class="small" x="518.0" y="387.5" text-anchor="middle" style="font-size:13px">validation</text>
-  <path class="greenLine" d="M300 310 L392 310"/>
-  <rect class="box" x="740" y="42" width="274" height="126" rx="8"/>
+  <path class="accentLine" d="M300 310 L392 310"/>
+  <rect class="boxHot" x="740" y="42" width="274" height="126" rx="8"/>
   <text class="label" x="877.0" y="85" text-anchor="middle">NVIDIA/skills</text>
-  <rect class="inner" x="768" y="114" width="218" height="16" rx="4"/>
+  <rect class="innerHot" x="768" y="114" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="125.0" text-anchor="middle" style="font-size:10px">CAD-to-SimReady</text>
   <rect class="inner" x="768" y="138" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="149.0" text-anchor="middle" style="font-size:10px">video aug</text>
   <rect class="inner" x="768" y="162" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="173.0" text-anchor="middle" style="font-size:10px">defect gen</text>
   <path class="greenLine" d="M644 310 L696 310 L696 105 L740 105"/>
-  <rect class="box" x="740" y="188" width="274" height="136" rx="8"/>
+  <rect class="boxAccent" x="740" y="188" width="274" height="136" rx="8"/>
   <text class="label" x="877.0" y="231" text-anchor="middle">Content Agents</text>
-  <rect class="inner" x="768" y="260" width="218" height="16" rx="4"/>
+  <rect class="innerAccent" x="768" y="260" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="271.0" text-anchor="middle" style="font-size:10px">material</text>
   <rect class="inner" x="768" y="284" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="295.0" text-anchor="middle" style="font-size:10px">physics</text>
   <rect class="inner" x="768" y="308" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="319.0" text-anchor="middle" style="font-size:10px">validation</text>
-  <path class="greenLine" d="M644 310 L696 310 L696 256 L740 256"/>
+  <path class="accentLine" d="M644 310 L696 310 L696 256 L740 256"/>
   <rect class="boxHot" x="740" y="344" width="274" height="126" rx="8"/>
   <text class="label" x="877.0" y="387" text-anchor="middle">Omniverse RTX</text>
-  <rect class="inner" x="768" y="416" width="218" height="16" rx="4"/>
+  <rect class="innerAccent" x="768" y="416" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="427.0" text-anchor="middle" style="font-size:10px">preview</text>
   <rect class="inner" x="768" y="440" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="451.0" text-anchor="middle" style="font-size:10px">video</text>
@@ -67,23 +73,23 @@
   <path class="greenLine" d="M644 310 L696 310 L696 407 L740 407"/>
   <rect class="boxHot" x="740" y="490" width="274" height="104" rx="8"/>
   <text class="label" x="877.0" y="528" text-anchor="middle">NuRec/NRE</text>
-  <rect class="inner" x="768" y="544" width="218" height="16" rx="4"/>
+  <rect class="innerHot" x="768" y="544" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="555.0" text-anchor="middle" style="font-size:10px">ncore</text>
-  <rect class="inner" x="768" y="568" width="218" height="16" rx="4"/>
+  <rect class="innerHot" x="768" y="568" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="579.0" text-anchor="middle" style="font-size:10px">nre</text>
   <rect class="inner" x="768" y="592" width="218" height="16" rx="4"/>
   <text class="small" x="877.0" y="603.0" text-anchor="middle" style="font-size:10px">harvest</text>
   <path class="line" d="M644 310 L696 310 L696 542 L740 542"/>
-  <rect class="box" x="1158" y="224" width="156" height="172" rx="8"/>
+  <rect class="boxAccent" x="1158" y="224" width="156" height="172" rx="8"/>
   <text class="label" x="1236.0" y="267" text-anchor="middle">Handoff</text>
-  <rect class="inner" x="1186" y="296" width="100" height="19" rx="4"/>
+  <rect class="innerHot" x="1186" y="296" width="100" height="19" rx="4"/>
   <text class="small" x="1236.0" y="310.0" text-anchor="middle" style="font-size:13px">SimReady</text>
   <rect class="inner" x="1186" y="327" width="100" height="19" rx="4"/>
   <text class="small" x="1236.0" y="341.0" text-anchor="middle" style="font-size:13px">dataset</text>
   <rect class="inner" x="1186" y="358" width="100" height="19" rx="4"/>
   <text class="small" x="1236.0" y="372.0" text-anchor="middle" style="font-size:13px">eval</text>
   <path class="greenLine" d="M1014 105 L1090 105 L1090 310 L1158 310"/>
-  <path class="greenLine" d="M1014 256 L1090 256 L1090 310 L1158 310"/>
+  <path class="accentLine" d="M1014 256 L1090 256 L1090 310 L1158 310"/>
   <path class="greenLine" d="M1014 407 L1090 407 L1090 310 L1158 310"/>
   <path class="line" d="M1014 542 L1090 542 L1090 310 L1158 310"/>
 </svg>

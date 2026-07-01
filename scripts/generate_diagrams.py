@@ -20,26 +20,40 @@ THEME = {
     "bg": "transparent",
     "panel": "#0a100c",
     "panel_hot": "#0b1608",
+    "panel_accent": "#160929",
+    "inner_accent": "#1b0c31",
     "stroke": "#7d8780",
     "stroke_dim": "#3d4a42",
     "green": "#76b900",
+    "accent": "#5f1ebe",
     "text": "#edf3ef",
     "muted": "#c6cec8",
 }
 
 GREEN_BORDER_LABELS = {
+    "b200slurm",
     "brev",
+    "cadtosimready",
+    "cosmoscurator",
     "cosmosframework",
     "dynamo",
     "flashdreams",
     "isaac",
     "isaacsim",
+    "launchable",
+    "megatroncore",
     "nim",
+    "ncore",
+    "nvidiaskills",
+    "nre",
     "nurecnre",
     "omniverse",
     "omniversertx",
     "osmo",
     "sbrev",
+    "simready",
+    "tao",
+    "vss",
 }
 
 
@@ -62,18 +76,24 @@ def svg_open(title: str, desc: str, width: int = 1360, height: int = 620) -> lis
         f"      .bg {{ fill: {THEME['bg']}; }}",
         f"      .box {{ fill: {THEME['panel']}; stroke: {THEME['stroke_dim']}; stroke-width: 2; }}",
         f"      .boxHot {{ fill: {THEME['panel_hot']}; stroke: {THEME['green']}; stroke-width: 2.3; }}",
+        f"      .boxAccent {{ fill: {THEME['panel_accent']}; stroke: {THEME['accent']}; stroke-width: 2.3; }}",
         f"      .inner {{ fill: #0d130f; stroke: {THEME['stroke']}; stroke-width: 1.9; }}",
         f"      .innerHot {{ fill: #0d1809; stroke: {THEME['green']}; stroke-width: 1.9; }}",
+        f"      .innerAccent {{ fill: {THEME['inner_accent']}; stroke: {THEME['accent']}; stroke-width: 1.9; }}",
         f"      .label {{ fill: {THEME['text']}; font-family: Aptos, Helvetica, sans-serif; font-size: 20px; font-weight: 680; }}",
         f"      .small {{ fill: {THEME['muted']}; font-family: Aptos, Helvetica, sans-serif; font-size: 13px; font-weight: 620; }}",
         "      .line { stroke: #e6ece8; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }",
         f"      .greenLine {{ stroke: {THEME['green']}; stroke-width: 2.4; fill: none; marker-end: url(#arrowGreen); }}",
+        f"      .accentLine {{ stroke: {THEME['accent']}; stroke-width: 2.4; fill: none; marker-end: url(#arrowAccent); }}",
         "    </style>",
         '    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">',
         '      <path d="M 0 1 L 8 4 L 0 7 z" fill="#e6ece8"/>',
         "    </marker>",
         '    <marker id="arrowGreen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">',
         f'      <path d="M 0 1 L 8 4 L 0 7 z" fill="{THEME["green"]}"/>',
+        "    </marker>",
+        '    <marker id="arrowAccent" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse">',
+        f'      <path d="M 0 1 L 8 4 L 0 7 z" fill="{THEME["accent"]}"/>',
         "    </marker>",
         "  </defs>",
         f'  <rect class="bg" x="0" y="0" width="{width}" height="{height}"/>',
@@ -90,8 +110,16 @@ def text_size(label: str) -> int:
     return 13
 
 
-def inner_box(x: int, y: int, w: int, h: int, label: str, hot: bool = False) -> list[str]:
-    cls = "innerHot" if hot else "inner"
+def inner_box(
+    x: int,
+    y: int,
+    w: int,
+    h: int,
+    label: str,
+    hot: bool = False,
+    accent: bool = False,
+) -> list[str]:
+    cls = "innerHot" if hot else "innerAccent" if accent else "inner"
     size = min(text_size(label), max(8, h - 6))
     return [
         f'  <rect class="{cls}" x="{x}" y="{y}" width="{w}" height="{h}" rx="4"/>',
@@ -109,7 +137,9 @@ def outer_box(
     hot_items: set[str] | None = None,
     hot: bool = False,
 ) -> list[str]:
-    cls = "boxHot" if has_green_border(title) else "box"
+    hot_items = hot_items or set()
+    title_is_nvidia = has_green_border(title)
+    cls = "boxHot" if title_is_nvidia else "boxAccent" if hot else "box"
     out = [f'  <rect class="{cls}" x="{x}" y="{y}" width="{w}" height="{h}" rx="8"/>']
     title_y = y + (38 if h <= 110 else 43)
     out.append(f'  <text class="label" x="{x + w / 2:.1f}" y="{title_y}" text-anchor="middle">{escape(title)}</text>')
@@ -127,17 +157,28 @@ def outer_box(
     total_height = ih * len(items) + gap * (len(items) - 1)
     start_y = content_top + max(0, int((available - total_height) / 2))
     for i, item in enumerate(items):
-        out.extend(inner_box(ix, start_y + i * (ih + gap), iw, ih, item, hot=has_green_border(item)))
+        item_is_nvidia = has_green_border(item)
+        out.extend(
+            inner_box(
+                ix,
+                start_y + i * (ih + gap),
+                iw,
+                ih,
+                item,
+                hot=item_is_nvidia,
+                accent=item in hot_items and not item_is_nvidia,
+            )
+        )
     return out
 
 
-def arrow(x1: int, y1: int, x2: int, y2: int, hot: bool = False) -> str:
-    cls = "greenLine" if hot else "line"
+def arrow(x1: int, y1: int, x2: int, y2: int, hot: bool = False, accent: bool = False) -> str:
+    cls = "greenLine" if hot else "accentLine" if accent else "line"
     return f'  <path class="{cls}" d="M{x1} {y1} L{x2} {y2}"/>'
 
 
-def elbow(points: list[tuple[int, int]], hot: bool = False) -> str:
-    cls = "greenLine" if hot else "line"
+def elbow(points: list[tuple[int, int]], hot: bool = False, accent: bool = False) -> str:
+    cls = "greenLine" if hot else "accentLine" if accent else "line"
     path = [f"M{points[0][0]} {points[0][1]}"]
     path.extend(f"L{x} {y}" for x, y in points[1:])
     return f'  <path class="{cls}" d="{" ".join(path)}"/>'
@@ -224,8 +265,8 @@ def architecture() -> None:
             hot=True,
         )
     )
-    lines.append(arrow(agent_x + agent_w // 2, agent_y, adapt_center, y + h, hot=True))
-    lines.append(elbow([(x0 + 4 * (w + gap) + w // 2, y + h), (x0 + 4 * (w + gap) + w // 2, 390), (x0 + w + gap + w // 2, 390), (x0 + w + gap + w // 2, y + h)], hot=True))
+    lines.append(arrow(agent_x + agent_w // 2, agent_y, adapt_center, y + h, accent=True))
+    lines.append(elbow([(x0 + 4 * (w + gap) + w // 2, y + h), (x0 + 4 * (w + gap) + w // 2, 390), (x0 + w + gap + w // 2, 390), (x0 + w + gap + w // 2, y + h)], accent=True))
     write_svg("architecture.svg", lines)
 
 
@@ -250,7 +291,7 @@ def data_factory() -> None:
     curate_center = x0 + 2 * (w + gap) + w // 2
     synth_x, synth_y, synth_w, synth_h = curate_center - 290, 424, 580, 108
     lines.extend(outer_box(synth_x, synth_y, synth_w, synth_h, "Synthetic gap closure", ["scenario evidence"], {"scenario evidence"}, hot=True))
-    lines.append(arrow(synth_x + synth_w // 2, synth_y, curate_center, y + h, hot=True))
+    lines.append(arrow(synth_x + synth_w // 2, synth_y, curate_center, y + h, accent=True))
     write_svg("data-factory.svg", lines)
 
 
@@ -270,7 +311,7 @@ def agent_workflow() -> None:
         x = x0 + i * (w + gap)
         lines.extend(outer_box(x, y, w, h, title, items, hot_items, hot=i == 2))
         if i < len(boxes) - 1:
-            lines.append(arrow(x + w, y + h // 2, x + w + gap - 4, y + h // 2, hot=i == 1))
+            lines.append(arrow(x + w, y + h // 2, x + w + gap - 4, y + h // 2, accent=i == 1))
 
     step_y, step_w, step_h, step_gap = 380, 105, 74, 12
     steps = ["intake", "data", "neural", "simready", "fine-tune", "inference", "eval", "deploy", "govern"]
@@ -280,7 +321,7 @@ def agent_workflow() -> None:
         lines.extend(outer_box(x, step_y, step_w, step_h, step, [], hot=step in {"fine-tune", "inference"}))
         if i < len(steps) - 1:
             lines.append(arrow(x + step_w, step_y + step_h // 2, x + step_w + step_gap - 4, step_y + step_h // 2))
-    lines.append(elbow([(x0 + 2 * (w + gap) + w // 2, y + h), (x0 + 2 * (w + gap) + w // 2, 334), (step_x + 2 * (step_w + step_gap) + step_w // 2, 334), (step_x + 2 * (step_w + step_gap) + step_w // 2, step_y)], hot=True))
+    lines.append(elbow([(x0 + 2 * (w + gap) + w // 2, y + h), (x0 + 2 * (w + gap) + w // 2, 334), (step_x + 2 * (step_w + step_gap) + step_w // 2, 334), (step_x + 2 * (step_w + step_gap) + step_w // 2, step_y)], accent=True))
     write_svg("agent-workflow.svg", lines)
 
 
@@ -291,7 +332,7 @@ def neural_asset_services() -> None:
     )
     lines.extend(outer_box(56, 220, 244, 180, "Evidence", ["sensors", "CAD/OpenUSD", "video gaps"], {"sensors"}))
     lines.extend(outer_box(392, 202, 252, 216, "Route selector", ["rights", "service surface", "validation"], {"service surface"}, hot=True))
-    lines.append(arrow(300, 310, 392, 310, hot=True))
+    lines.append(arrow(300, 310, 392, 310, accent=True))
 
     routes = [
         (740, 42, 126, "NVIDIA/skills", ["CAD-to-SimReady", "video aug", "defect gen"]),
@@ -301,15 +342,35 @@ def neural_asset_services() -> None:
     ]
     route_trunk_x = 696
     for x, y, h, title, items in routes:
+        highlighted_route = title in {"NVIDIA/skills", "Content Agents", "Omniverse RTX"}
+        nvidia_route = has_green_border(title)
         hot_items = {items[0]}
-        lines.extend(outer_box(x, y, 274, h, title, items, hot_items, hot=title in {"NVIDIA/skills", "Content Agents", "Omniverse RTX"}))
+        lines.extend(outer_box(x, y, 274, h, title, items, hot_items, hot=highlighted_route))
         route_y = y + h // 2
-        lines.append(elbow([(644, 310), (route_trunk_x, 310), (route_trunk_x, route_y), (x, route_y)], hot=title in {"NVIDIA/skills", "Content Agents", "Omniverse RTX"}))
+        lines.append(
+            elbow(
+                [(644, 310), (route_trunk_x, 310), (route_trunk_x, route_y), (x, route_y)],
+                hot=highlighted_route and nvidia_route,
+                accent=highlighted_route and not nvidia_route,
+            )
+        )
 
     lines.extend(outer_box(1158, 224, 156, 172, "Handoff", ["SimReady", "dataset", "eval"], {"SimReady"}, hot=True))
     handoff_trunk_x = 1090
-    for route_y, hot_route in ((105, True), (256, True), (407, True), (542, False)):
-        lines.append(elbow([(1014, route_y), (handoff_trunk_x, route_y), (handoff_trunk_x, 310), (1158, 310)], hot=hot_route))
+    for route_y, title, highlighted_route in (
+        (105, "NVIDIA/skills", True),
+        (256, "Content Agents", True),
+        (407, "Omniverse RTX", True),
+        (542, "NuRec/NRE", False),
+    ):
+        nvidia_route = has_green_border(title)
+        lines.append(
+            elbow(
+                [(1014, route_y), (handoff_trunk_x, route_y), (handoff_trunk_x, 310), (1158, 310)],
+                hot=highlighted_route and nvidia_route,
+                accent=highlighted_route and not nvidia_route,
+            )
+        )
     write_svg("neural-asset-services.svg", lines)
 
 
@@ -334,8 +395,8 @@ def execution_lanes() -> None:
         lines.extend(outer_box(x, y, 310, lane_h, title, items, hot_items, hot=title in {"Large training", "Orchestrate"}))
         if title in {"Pilot", "Large training", "Massive scale"}:
             lane_y = y + lane_h // 2
-            lines.append(elbow([(selector_x + selector_w, selector_y + selector_h // 2), (lane_trunk_x, selector_y + selector_h // 2), (lane_trunk_x, lane_y), (x, lane_y)], hot=title == "Large training"))
-    lines.append(elbow([(778, 307), (842, 307), (842, 209), (904, 209)], hot=True))
+            lines.append(elbow([(selector_x + selector_w, selector_y + selector_h // 2), (lane_trunk_x, selector_y + selector_h // 2), (lane_trunk_x, lane_y), (x, lane_y)], accent=title == "Large training"))
+    lines.append(elbow([(778, 307), (842, 307), (842, 209), (904, 209)], accent=True))
     lines.append(elbow([(778, 491), (842, 491), (842, 415), (904, 415)]))
     write_svg("execution-lanes.svg", lines)
 
