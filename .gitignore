@@ -9,9 +9,11 @@ __pycache__/
 .mypy_cache/
 .beagle/
 .venv/
+.uv-cache/
 node_modules/
 dist/
 build/
+site/
 outputs/
 runs/
 artifacts/

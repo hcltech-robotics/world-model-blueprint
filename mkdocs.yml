@@ -1,0 +1,43 @@
+site_name: World Model Blueprint
+site_description: Static documentation for the World Model Blueprint for autonomy programmes.
+repo_url: https://github.com/hcltech-robotics/world-model-blueprint
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+strict: true
+
+theme:
+  name: mkdocs
+  nav_style: dark
+  highlightjs: false
+
+extra_css:
+  - assets/stylesheets/site.css
+
+markdown_extensions:
+  - fenced_code
+  - sane_lists
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Index: index.md
+  - Quickstart: quickstart.md
+  - Blueprint:
+      - Blueprint: blueprint.md
+      - Reference architecture: reference-architecture.md
+      - Data strategy: data-strategy.md
+  - Operations:
+      - Post-training: post-training.md
+      - Infrastructure: infrastructure.md
+      - Deployment: deployment.md
+      - Toolchain: toolchain.md
+  - Governance:
+      - Agent system: agent-system.md
+      - Governance: governance.md
+      - Manifest contracts: manifest-contracts.md
+      - Benchmarks: benchmarks.md
+  - Reference:
+      - Repository structure: repository-structure.md
+      - Source map: source-map.md

@@ -1,6 +1,7 @@
-.PHONY: validate format-check format benchmarks skill-audit
+.PHONY: validate format-check format benchmarks skill-audit site site-serve
 
 PYTHON ?= python3
+MKDOCS ?= $(PYTHON) -m mkdocs
 PYTHONPATH := src
 export PYTHONPATH
 
@@ -19,3 +20,9 @@ benchmarks:
 
 skill-audit:
 	$(PYTHON) -m world_model_blueprint.cli skill-audit --root . --output artifacts/skill-audit.json
+
+site:
+	$(MKDOCS) build --strict
+
+site-serve:
+	$(MKDOCS) serve

@@ -1,9 +1,10 @@
-# Documentation index
+# World Model Blueprint
 
-This documentation set is the enterprise blueprint for adapting Cosmos 3-class world models to autonomy programmes.
+This blueprint is an operating system for moving from enterprise autonomy data to a fine-tuned world model and a governed sim-to-real loop. It is built for organisations whose advantage lives in the physical world: surgical robotics, agricultural machinery, industrial automation, autonomous vehicles, mobile robots, and smart infrastructure.
 
 ## Read first
 
+- [Quickstart](quickstart.md)
 - [Blueprint](blueprint.md)
 - [Reference architecture](reference-architecture.md)
 - [Source map](source-map.md)

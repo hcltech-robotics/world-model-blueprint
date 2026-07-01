@@ -28,7 +28,7 @@ Use Brev for smaller single-instance work: dataset pilots, captioning, first SFT
 
 Do not use Brev for multi-node training. Record the instance type, GPU count, container image, mounted paths, credentials used by handle rather than value, and cleanup status.
 
-Template: [../deploy/brev/pilot-run.md](../deploy/brev/pilot-run.md).
+Template: [deploy/brev/pilot-run.md](https://github.com/hcltech-robotics/world-model-blueprint/blob/main/deploy/brev/pilot-run.md).
 
 ### Local GPU workstations
 
@@ -40,7 +40,7 @@ Use Slurm for large SFT, high-throughput evaluation, and long-running adaptation
 
 Before submission, verify passwordless access to the login node, the target partition or queue, account policy, container image access, shared filesystem paths, and checkpoint cadence. Use one scheduler task per node when the training launcher spawns per-GPU workers itself.
 
-Template: [../deploy/slurm/cosmos-training.sbatch](../deploy/slurm/cosmos-training.sbatch).
+Template: [deploy/slurm/cosmos-training.sbatch](https://github.com/hcltech-robotics/world-model-blueprint/blob/main/deploy/slurm/cosmos-training.sbatch).
 
 ### Megatron for massive training
 
@@ -54,7 +54,7 @@ Use Kubernetes for cloud-native GPU platforms, NIM Operator, OSMO workflows, and
 
 Before applying jobs, verify GPU operator or device plugin state, storage class, image-pull secrets, service accounts, namespace policy, node placement, OSMO pool state, data credentials, workflow YAML, and output dataset policy.
 
-Templates: [../deploy/kubernetes/inference-service.yaml](../deploy/kubernetes/inference-service.yaml) and [../deploy/osmo/world-model-workflow.yaml](../deploy/osmo/world-model-workflow.yaml).
+Templates: [deploy/kubernetes/inference-service.yaml](https://github.com/hcltech-robotics/world-model-blueprint/blob/main/deploy/kubernetes/inference-service.yaml) and [deploy/osmo/world-model-workflow.yaml](https://github.com/hcltech-robotics/world-model-blueprint/blob/main/deploy/osmo/world-model-workflow.yaml).
 
 ### SkyPilot and cloud-agnostic launchers
 
