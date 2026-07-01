@@ -313,7 +313,7 @@ git diff --check
 
 The benchmark harness writes to `artifacts/benchmark-report.json`, which is intentionally ignored by Git. Programme-specific artefacts should remain in controlled programme systems or ignored local artefact directories.
 
-## Roadmap 
+## Roadmap
 
 - [x] Initial structure
 - [x] Key functional flow
@@ -333,4 +333,3 @@ This blueprint draws on some practices established in public NVIDIA and Agent Sk
 NVIDIA, Cosmos, NIM, NeMo, Omniverse, Isaac, TAO, and related names are trade marks of NVIDIA Corporation.
 
 The World Model Blueprint was developed at HCLTech in early 2026 and updated for the capabilities of Cosmos-3. While it draws on NVIDIA's skill and blueprint architecture in the interests of smooth integration with the NIM/Brev and Omniverse ecosystems, it is an independent product and is not endorsed or approved by NVIDIA.
-

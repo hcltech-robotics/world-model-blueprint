@@ -1,6 +1,6 @@
 # Benchmarks
 
-The benchmark suite checks whether the blueprint is operationally equipped. 
+The benchmark suite checks whether the blueprint is operationally equipped.
 
 ## Benchmark surfaces
 
