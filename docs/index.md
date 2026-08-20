@@ -2,6 +2,8 @@
 
 This blueprint is an operating system for moving from enterprise autonomy data to a fine-tuned world model and a governed sim-to-real loop. It is built for organisations whose advantage lives in the physical world: surgical robotics, agricultural machinery, industrial automation, autonomous vehicles, mobile robots, and smart infrastructure.
 
+![World Model Blueprint: autonomous robots, digital twins, and governed world-model data flows](assets/images/world-model-blueprint-social-preview.jpg)
+
 ## Read first
 
 - [Quickstart](quickstart.md)

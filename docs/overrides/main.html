@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% set page_title = page.title if page and page.title and not page.is_homepage else config.site_name %}
+  {% set page_description = config.site_description %}
+  {% set preview_image = config.site_url ~ config.extra.social_preview_image %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:url" content="{{ page.canonical_url if page and page.canonical_url else config.site_url }}">
+  <meta property="og:image" content="{{ preview_image }}">
+  <meta property="og:image:alt" content="World Model Blueprint visual: autonomous robots, digital twins, and governed world-model data flows.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:image" content="{{ preview_image }}">
+{% endblock %}

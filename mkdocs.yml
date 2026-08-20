@@ -1,6 +1,9 @@
 site_name: World Model Blueprint
-site_description: Static documentation for the World Model Blueprint for autonomy programmes.
+site_description: A governed enterprise blueprint for fine-tuning and deploying world models for sim-to-real autonomy.
+site_url: https://hcltech-robotics.github.io/world-model-blueprint/
+site_author: HCLTech Robotics
 repo_url: https://github.com/hcltech-robotics/world-model-blueprint
+repo_name: hcltech-robotics/world-model-blueprint
 edit_uri: edit/main/docs/
 docs_dir: docs
 site_dir: site
@@ -8,11 +11,15 @@ strict: true
 
 theme:
   name: mkdocs
+  custom_dir: docs/overrides
   nav_style: dark
   highlightjs: false
 
 extra_css:
   - assets/stylesheets/site.css
+
+extra:
+  social_preview_image: assets/images/world-model-blueprint-social-preview.jpg
 
 markdown_extensions:
   - fenced_code
