@@ -15,7 +15,7 @@ authors = [
 
 [project.optional-dependencies]
 docs = [
-    "mkdocs>=1.6,<2",
+    "mkdocs-hcltech-robotics @ git+https://github.com/hcltech-robotics/mkdocs-hcltech-robotics.git@83f8ad2070011f787eb0e0335f9a8824facc8ff0",
 ]
 
 [project.scripts]
@@ -23,6 +23,9 @@ wmb = "world_model_blueprint.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/world_model_blueprint"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.world-model-blueprint]
 schema_dir = "schemas"
