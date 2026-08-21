@@ -17,7 +17,7 @@ scripts/wmb run-plan --request <run-request> --output <run-plan>
 The templates in `deploy/` provide the shape of the execution lane. Platform owners must resolve account, namespace, storage, image, secret, and endpoint values from controlled systems.
 
 <p align="center">
-  <img src="assets/inference-services.svg" alt="Inference service choices across NIM, FlashDreams, Dynamo, Cosmos Framework, vLLM, and Transformers" width="920">
+  <img src="../assets/inference-services.svg" alt="Inference service choices across NIM, FlashDreams, Dynamo, Cosmos Framework, vLLM, and Transformers" width="920">
 </p>
 
 ## Training execution lanes

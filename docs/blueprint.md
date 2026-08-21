@@ -23,7 +23,7 @@ The blueprint does not assume that Cosmos 3 is always the only model in the syst
 ## Reference architecture
 
 <p align="center">
-  <img src="assets/architecture.svg" alt="Simplified world model blueprint architecture" width="920">
+  <img src="../assets/architecture.svg" alt="Simplified world model blueprint architecture" width="920">
 </p>
 
 The architecture has five operating blocks:
@@ -54,7 +54,7 @@ These artefacts are intentionally generic. They do not contain customer data, se
 Training and inference are planned as explicit deployment lanes:
 
 <p align="center">
-  <img src="assets/execution-lanes.svg" alt="Execution lane selection for pilots, large training, massive training, orchestration, and real-time serving" width="920">
+  <img src="../assets/execution-lanes.svg" alt="Execution lane selection for pilots, large training, massive training, orchestration, and real-time serving" width="920">
 </p>
 
 - **Brev and local GPU workstations** for pilot SFT runs, dataset validation, captioning pilots, evaluation dry runs, and single-node inference experiments.
