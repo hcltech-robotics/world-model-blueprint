@@ -1,0 +1,8 @@
+/* Keep sticky navigation opaque so scrolling diagrams cannot show through it. */
+.md-header {
+  background: linear-gradient(90deg, #19191e 0%, #19191e 58%, #202028 100%);
+}
+
+[data-md-color-scheme="hcltech-light"] .md-header {
+  background: linear-gradient(90deg, #ffffff 0%, #f7f9fc 64%, #e9f2ff 100%);
+}

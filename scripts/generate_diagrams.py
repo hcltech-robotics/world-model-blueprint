@@ -136,6 +136,7 @@ def outer_box(
     items: list[str],
     hot_items: set[str] | None = None,
     hot: bool = False,
+    compact: bool = False,
 ) -> list[str]:
     hot_items = hot_items or set()
     title_is_nvidia = has_green_border(title)
@@ -149,10 +150,10 @@ def outer_box(
 
     ix = x + 28
     iw = w - 56
-    content_top = y + (54 if h <= 110 else 72)
+    content_top = y + (54 if h <= 110 else 62 if compact else 72)
     content_bottom = y + h - 18
     available = content_bottom - content_top
-    gap = 8 if h <= 150 else 12
+    gap = 8 if h <= 150 or compact else 12
     ih = min(36, max(16, int((available - gap * (len(items) - 1)) / len(items))))
     total_height = ih * len(items) + gap * (len(items) - 1)
     start_y = content_top + max(0, int((available - total_height) / 2))
@@ -329,44 +330,45 @@ def neural_asset_services() -> None:
     lines = svg_open(
         "Neural asset services",
         "A schematic for routing source evidence to NVIDIA skills, Content Agents, NuRec, and SimReady or dataset handoff.",
+        height=700,
     )
-    lines.extend(outer_box(56, 220, 244, 180, "Evidence", ["sensors", "CAD/OpenUSD", "video gaps"], {"sensors"}))
-    lines.extend(outer_box(392, 202, 252, 216, "Route selector", ["rights", "service surface", "validation"], {"service surface"}, hot=True))
-    lines.append(arrow(300, 310, 392, 310, accent=True))
+    lines.extend(outer_box(56, 260, 244, 180, "Evidence", ["sensors", "CAD/OpenUSD", "video gaps"], {"sensors"}))
+    lines.extend(outer_box(392, 242, 252, 216, "Route selector", ["rights", "service surface", "validation"], {"service surface"}, hot=True))
+    lines.append(arrow(300, 350, 392, 350, accent=True))
 
     routes = [
-        (740, 42, 126, "NVIDIA/skills", ["CAD-to-SimReady", "video aug", "defect gen"]),
-        (740, 188, 136, "Content Agents", ["material", "physics", "validation"]),
-        (740, 344, 126, "Omniverse RTX", ["preview", "video", "sensor sim"]),
-        (740, 490, 104, "NuRec/NRE", ["ncore", "nre", "harvest"]),
+        (740, 44, 144, "NVIDIA/skills", ["CAD-to-SimReady", "video aug", "defect gen"]),
+        (740, 200, 144, "Content Agents", ["material", "physics", "validation"]),
+        (740, 356, 144, "Omniverse RTX", ["preview", "video", "sensor sim"]),
+        (740, 512, 144, "NuRec/NRE", ["ncore", "nre", "harvest"]),
     ]
     route_trunk_x = 696
     for x, y, h, title, items in routes:
         highlighted_route = title in {"NVIDIA/skills", "Content Agents", "Omniverse RTX"}
         nvidia_route = has_green_border(title)
         hot_items = {items[0]}
-        lines.extend(outer_box(x, y, 274, h, title, items, hot_items, hot=highlighted_route))
+        lines.extend(outer_box(x, y, 274, h, title, items, hot_items, hot=highlighted_route, compact=True))
         route_y = y + h // 2
         lines.append(
             elbow(
-                [(644, 310), (route_trunk_x, 310), (route_trunk_x, route_y), (x, route_y)],
+                [(644, 350), (route_trunk_x, 350), (route_trunk_x, route_y), (x, route_y)],
                 hot=highlighted_route and nvidia_route,
                 accent=highlighted_route and not nvidia_route,
             )
         )
 
-    lines.extend(outer_box(1158, 224, 156, 172, "Handoff", ["SimReady", "dataset", "eval"], {"SimReady"}, hot=True))
+    lines.extend(outer_box(1158, 264, 156, 172, "Handoff", ["SimReady", "dataset", "eval"], {"SimReady"}, hot=True))
     handoff_trunk_x = 1090
     for route_y, title, highlighted_route in (
-        (105, "NVIDIA/skills", True),
-        (256, "Content Agents", True),
-        (407, "Omniverse RTX", True),
-        (542, "NuRec/NRE", False),
+        (116, "NVIDIA/skills", True),
+        (272, "Content Agents", True),
+        (428, "Omniverse RTX", True),
+        (584, "NuRec/NRE", False),
     ):
         nvidia_route = has_green_border(title)
         lines.append(
             elbow(
-                [(1014, route_y), (handoff_trunk_x, route_y), (handoff_trunk_x, 310), (1158, 310)],
+                [(1014, route_y), (handoff_trunk_x, route_y), (handoff_trunk_x, 350), (1158, 350)],
                 hot=highlighted_route and nvidia_route,
                 accent=highlighted_route and not nvidia_route,
             )
