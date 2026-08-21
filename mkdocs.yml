@@ -10,15 +10,11 @@ site_dir: site
 strict: true
 
 theme:
-  name: mkdocs
+  name: hcltech-robotics
   custom_dir: docs/overrides
-  nav_style: dark
-  highlightjs: false
-
-extra_css:
-  - assets/stylesheets/site.css
 
 extra:
+  brand_title: World Model Blueprint
   social_preview_image: assets/images/world-model-blueprint-social-preview.jpg
 
 markdown_extensions:

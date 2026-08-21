@@ -20,12 +20,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Configure access to documentation theme
+        env:
+          HCLTECH_ROBOTICS_THEME_TOKEN: ${{ secrets.HCLTECH_ROBOTICS_THEME_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${HCLTECH_ROBOTICS_THEME_TOKEN}@github.com/".insteadOf "https://github.com/"
       - run: python -m pip install -e ".[docs]"
       - run: mkdocs build --strict
       - run: touch site/.nojekyll
