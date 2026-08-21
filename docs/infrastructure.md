@@ -14,7 +14,7 @@ scripts/wmb run-plan --request artifacts/run-request.json --output artifacts/run
 The planner is deliberately conservative. It routes by workload type, scale, node count, real-time needs, hardware-in-the-loop requirements, and workflow orchestration needs. It does not replace platform-owner review.
 
 <p align="center">
-  <img src="assets/execution-lanes.svg" alt="Execution lane selection across Brev, B200 Slurm, Megatron, OSMO, Kubernetes, Ray, NIM, Dynamo, and FlashDreams" width="920">
+  <img src="../assets/execution-lanes.svg" alt="Execution lane selection across Brev, B200 Slurm, Megatron, OSMO, Kubernetes, Ray, NIM, Dynamo, and FlashDreams" width="920">
 </p>
 
 ## Execution matrix

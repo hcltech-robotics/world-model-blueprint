@@ -18,7 +18,7 @@ The runner loads the selected skill's `SKILL.md`, skill card, output contract, p
 The model output is written to a programme artefact path. It is a planning and evidence artefact, not an automatic approval, deployment, or promotion.
 
 <p align="center">
-  <img src="assets/agent-workflow.svg" alt="Agent-driven workflow using environment-provided LLM configuration and local skills" width="920">
+  <img src="../assets/agent-workflow.svg" alt="Agent-driven workflow using environment-provided LLM configuration and local skills" width="920">
 </p>
 
 ## Skill packaging

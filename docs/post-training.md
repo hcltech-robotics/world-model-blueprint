@@ -38,7 +38,7 @@ The manifest should be resolved from programme records, not conversational assum
 Choose the execution lane before launching training:
 
 <p align="center">
-  <img src="assets/execution-lanes.svg" alt="Execution lane selection for Cosmos-class post-training and serving" width="920">
+  <img src="../assets/execution-lanes.svg" alt="Execution lane selection for Cosmos-class post-training and serving" width="920">
 </p>
 
 | Lane | Use for | Operating notes |
@@ -96,7 +96,7 @@ The adapted model is not promoted because it performs better on a training metri
 NIM is the preferred production surface when the required Cosmos model and mode are available. FlashDreams is the preferred lane for interactive autoregressive video or world-model inference, including self-forcing and closed-loop simulation patterns. Cosmos Framework inference, vLLM, or Transformers may be used for research, custom checkpoints, and workflows not yet represented as a NIM. The serving handoff must include the model artefact, data manifest, evaluation report, limitations, runtime settings, and rollback target.
 
 <p align="center">
-  <img src="assets/inference-services.svg" alt="Inference service choices for post-training handoff" width="920">
+  <img src="../assets/inference-services.svg" alt="Inference service choices for post-training handoff" width="920">
 </p>
 
 The training owner and deployment owner should agree the serving path before the first expensive run. A checkpoint that cannot be exported, loaded, monitored, or rolled back is not production work.

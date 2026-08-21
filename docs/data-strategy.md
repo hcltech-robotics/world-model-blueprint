@@ -16,11 +16,11 @@ scripts/wmb validate-manifest --schema schemas/dataset-manifest.schema.json --ma
 The dataset manifest travels with all derived clips, captions, labels, simulation outputs, and training records.
 
 <p align="center">
-  <img src="assets/data-factory.svg" alt="Data and SimReady factory from real evidence and digital assets to model-ready datasets" width="920">
+  <img src="../assets/data-factory.svg" alt="Data and SimReady factory from real evidence and digital assets to model-ready datasets" width="920">
 </p>
 
 <p align="center">
-  <img src="assets/neural-asset-services.svg" alt="Neural reconstruction and asset creation route through NVIDIA skills, Content Agents, NuRec, and downstream handoff" width="920">
+  <img src="../assets/neural-asset-services.svg" alt="Neural reconstruction and asset creation route through NVIDIA skills, Content Agents, NuRec, and downstream handoff" width="920">
 </p>
 
 ## Required data classes

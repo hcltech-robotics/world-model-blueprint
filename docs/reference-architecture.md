@@ -13,7 +13,7 @@ The architecture turns an autonomy problem into an auditable world model program
 - Executable manifests, checks, benchmarks, and deployment templates that make the architecture operable.
 
 <p align="center">
-  <img src="assets/architecture.svg" alt="Simplified world model blueprint architecture" width="920">
+  <img src="../assets/architecture.svg" alt="Simplified world model blueprint architecture" width="920">
 </p>
 
 ## System blocks
